@@ -142,7 +142,7 @@ const BookingConfirmation = () => {
         <div className="bg-white rounded-lg p-4 shadow">
           <div className="flex items-start mb-4">
             <img
-              src="/api/placeholder/100/100"
+              src="/beach_1.jpg"
               alt="Property"
               className="w-24 h-24 object-cover rounded-lg mr-4"
             />

@@ -89,7 +89,7 @@ const AirbnbEarningsCalculator = () => {
           <div
             className="h-96 rounded-lg relative overflow-hidden"
             style={{
-              backgroundImage: "url('/api/placeholder/800/600')",
+              backgroundImage: "url('/map.png')",
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}

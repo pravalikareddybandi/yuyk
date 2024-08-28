@@ -90,7 +90,7 @@ const AddressInput = () => {
           </div>
           <div className="bg-green-100 p-4 rounded-lg mb-4">
             <img
-              src="/api/placeholder/600/300"
+              src="/map.png"
               alt="Map placeholder"
               className="w-full rounded-lg"
             />
@@ -264,7 +264,7 @@ const AddressInput = () => {
           </div>
           <div className="bg-green-100 p-4 rounded-lg mb-4 relative">
             <img
-              src="/api/placeholder/600/300"
+              src="/map.png"
               alt="Map placeholder"
               className="w-full rounded-lg"
             />

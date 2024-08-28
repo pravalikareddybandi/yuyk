@@ -37,8 +37,7 @@ const PropertyList: React.FC<PropertyListProps> = ({
     {
       id: "1",
       title: "Modern Loft in Downtown",
-      image_url:
-        "https://via.placeholder.com/400x300.png?text=Cozy+Cottage+by+the+Sea",
+      image_url: "/beach_1.jpg",
       price_per_night: 150,
       is_favorite: true,
     },

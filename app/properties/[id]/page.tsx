@@ -7,15 +7,14 @@ import { getUserId } from "@/app/lib/actions";
 
 const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
   const property = {
-    image_url:
-      "https://www.google.com/imgres?q=nature%20images&imgurl=https%3A%2F%2Fi0.wp.com%2Fpicjumbo.com%2Fwp-content%2Fuploads%2Fbeautiful-nature-mountain-scenery-with-flowers-free-photo.jpg%3Fw%3D600%26quality%3D80&imgrefurl=https%3A%2F%2Fpicjumbo.com%2Ffree-images%2Fnature%2F&docid=9xKzCbIQW6isoM&tbnid=NDQdEGL-6UGjmM&vet=12ahUKEwjV_7KF8ZWIAxVbh68BHblKA24QM3oECBwQAA..i&w=599&h=399&hcb=2&ved=2ahUKEwjV_7KF8ZWIAxVbh68BHblKA24QM3oECBwQAA",
+    image_url: "/beach_1.jpg",
     title: "hbjknkj",
     bedrooms: 1,
     guests: 10,
     bathrooms: 1,
     landlord: {
       id: "lsckld",
-      avatar_url: "https://source.unsplash.com/random/400x300?ocean",
+      avatar_url: "/beach_1.jpg",
       name: "jnkedm",
       description: "jndksemd",
     },
