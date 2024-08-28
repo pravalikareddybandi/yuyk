@@ -73,6 +73,156 @@ const Categories = () => {
 
         <span className="text-xs">Villas</span>
       </div>
+      <div
+        onClick={() => _setCategory("Beachfront")}
+        className={`pb-4 flex flex-col items-center space-y-2 border-b-2 ${
+          category == "Beachfront" ? "border-black" : "border-white"
+        } opacity-60 hover:border-gray-200 hover:opacity-100`}
+      >
+        <Image
+          src="/icn_category_beach.jpeg"
+          alt="Category - Beach"
+          width={20}
+          height={20}
+        />
+
+        <span className="text-xs">Beachfront</span>
+      </div>
+      <div
+        onClick={() => _setCategory("LakeFront")}
+        className={`pb-4 flex flex-col items-center space-y-2 border-b-2 ${
+          category == "LakeFront" ? "border-black" : "border-white"
+        } opacity-60 hover:border-gray-200 hover:opacity-100`}
+      >
+        <Image
+          src="/icn_category_beach.jpeg"
+          alt="Category - Beach"
+          width={20}
+          height={20}
+        />
+
+        <span className="text-xs">LakeFront</span>
+      </div>
+      <div
+        onClick={() => _setCategory("OMG")}
+        className={`pb-4 flex flex-col items-center space-y-2 border-b-2 ${
+          category == "OMG" ? "border-black" : "border-white"
+        } opacity-60 hover:border-gray-200 hover:opacity-100`}
+      >
+        <Image
+          src="/icn_category_beach.jpeg"
+          alt="Category - Beach"
+          width={20}
+          height={20}
+        />
+
+        <span className="text-xs">OMG!</span>
+      </div>
+      <div
+        onClick={() => _setCategory("Windmills")}
+        className={`pb-4 flex flex-col items-center space-y-2 border-b-2 ${
+          category == "Windmills" ? "border-black" : "border-white"
+        } opacity-60 hover:border-gray-200 hover:opacity-100`}
+      >
+        <Image
+          src="/icn_category_beach.jpeg"
+          alt="Category - Beach"
+          width={20}
+          height={20}
+        />
+
+        <span className="text-xs">Windmills</span>
+      </div>
+      <div
+        onClick={() => _setCategory("Lake")}
+        className={`pb-4 flex flex-col items-center space-y-2 border-b-2 ${
+          category == "Lake" ? "border-black" : "border-white"
+        } opacity-60 hover:border-gray-200 hover:opacity-100`}
+      >
+        <Image
+          src="/icn_category_beach.jpeg"
+          alt="Category - Beach"
+          width={20}
+          height={20}
+        />
+
+        <span className="text-xs">Lake</span>
+      </div>
+      <div
+        onClick={() => _setCategory("Water")}
+        className={`pb-4 flex flex-col items-center space-y-2 border-b-2 ${
+          category == "Water" ? "border-black" : "border-white"
+        } opacity-60 hover:border-gray-200 hover:opacity-100`}
+      >
+        <Image
+          src="/icn_category_beach.jpeg"
+          alt="Category - Beach"
+          width={20}
+          height={20}
+        />
+
+        <span className="text-xs">Water</span>
+      </div>
+      <div
+        onClick={() => _setCategory("pools")}
+        className={`pb-4 flex flex-col items-center space-y-2 border-b-2 ${
+          category == "pools" ? "border-black" : "border-white"
+        } opacity-60 hover:border-gray-200 hover:opacity-100`}
+      >
+        <Image
+          src="/icn_category_beach.jpeg"
+          alt="Category - Beach"
+          width={20}
+          height={20}
+        />
+
+        <span className="text-xs"> Pools</span>
+      </div>
+      <div
+        onClick={() => _setCategory("Farms")}
+        className={`pb-4 flex flex-col items-center space-y-2 border-b-2 ${
+          category == "Farms" ? "border-black" : "border-white"
+        } opacity-60 hover:border-gray-200 hover:opacity-100`}
+      >
+        <Image
+          src="/icn_category_beach.jpeg"
+          alt="Category - Beach"
+          width={20}
+          height={20}
+        />
+
+        <span className="text-xs">Farms</span>
+      </div>
+      <div
+        onClick={() => _setCategory("Countryside")}
+        className={`pb-4 flex flex-col items-center space-y-2 border-b-2 ${
+          category == "Countryside" ? "border-black" : "border-white"
+        } opacity-60 hover:border-gray-200 hover:opacity-100`}
+      >
+        <Image
+          src="/icn_category_beach.jpeg"
+          alt="Category - Beach"
+          width={20}
+          height={20}
+        />
+
+        <span className="text-xs">Countryside</span>
+      </div>
+      <div
+        onClick={() => _setCategory("Homes")}
+        className={`pb-4 flex flex-col items-center space-y-2 border-b-2 ${
+          category == "Homes" ? "border-black" : "border-white"
+        } opacity-60 hover:border-gray-200 hover:opacity-100`}
+      >
+        <Image
+          src="/icn_category_beach.jpeg"
+          alt="Category - Beach"
+          width={20}
+          height={20}
+        />
+
+        <span className="text-xs"> Homes</span>
+      </div>
 
       <div
         onClick={() => _setCategory("cabins")}

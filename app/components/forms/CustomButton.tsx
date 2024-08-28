@@ -1,22 +1,23 @@
+// CustomButton.tsx
+import React from "react";
+
 interface CustomButtonProps {
-    label: string;
-    className?: string;
-    onClick: () => void;
+  label: string;
+  onClick: () => void;
+  // Add `type` as an optional prop
+  type?: "button" | "submit" | "reset";
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({
-    label,
-    className,
-    onClick
+  label,
+  onClick,
+  type = "button",
 }) => {
-    return (
-        <div 
-            onClick={onClick}
-            className={`w-full py-4 bg-airbnb hover:bg-airbnb-dark text-white text-center rounded-xl transition cursor-pointer ${className}`}
-        >
-            {label}
-        </div>
-    )
-}
+  return (
+    <button type={type} onClick={onClick} className="btn">
+      {label}
+    </button>
+  );
+};
 
 export default CustomButton;

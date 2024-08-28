@@ -13,7 +13,25 @@ const nextConfig = {
                 hostname: '64.226.81.32',
                 port: '1337',
                 pathname: '/**'
-            }
+            },
+            {
+                protocol: 'https',
+                hostname: 'via.placeholder.com',
+                port: '',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'source.unsplash.com',
+                port: '',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'www.google.com',
+                port: '',
+                pathname: '/**',
+            },
         ]
     }
 };
