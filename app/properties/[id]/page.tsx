@@ -8,7 +8,7 @@ import { getUserId } from "@/app/lib/actions";
 const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
   const property = {
     image_url: "/beach_1.jpg",
-    title: "hbjknkj",
+    title: "hello",
     bedrooms: 1,
     guests: 10,
     bathrooms: 1,
