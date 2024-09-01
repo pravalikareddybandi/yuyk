@@ -1,13 +1,68 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import ReservationSidebar from "@/app/components/properties/ReservationSidebar";
 
 import apiService from "@/app/services/apiService";
 import { getUserId } from "@/app/lib/actions";
+import { useState } from "react";
 
-const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
+const ImageGallery = ({
+  images,
+  openModal,
+}: {
+  images: string[];
+  openModal?: any;
+}) => {
+  return (
+    <div className="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-1 lg:gap-2">
+      <div className="col-span-2 md:col-span-3">
+        <div className="w-full h-[60vh] md:h-[64vh] mb-2 overflow-hidden rounded-xl relative">
+          <Image
+            fill
+            src={images[0]}
+            className="object-cover w-full h-full"
+            alt="Property Image"
+            onClick={openModal}
+          />
+        </div>
+      </div>
+
+      <div className="col-span-2 grid grid-cols-2 gap-2 md:gap-1 lg:gap-2">
+        {images.slice(1, 5).map((image, index) => (
+          <div key={index} className="relative w-full h-70 md:h-70 lg:h-70">
+            <Image
+              src={image}
+              alt={`Property Image ${index + 1}`}
+              fill
+              className="object-cover w-full h-full rounded-lg"
+              onClick={openModal}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const PropertyDetailPage = ({ params }: { params: { id: string } }) => {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   const property = {
-    image_url: "/beach_1.jpg",
+    image_url: [
+      "/beach_1.jpg",
+      "/beach_1.jpg",
+      "/beach_1.jpg",
+      "/beach_1.jpg",
+      "/beach_1.jpg",
+    ],
     title: "hello",
     bedrooms: 1,
     guests: 10,
@@ -19,20 +74,41 @@ const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
       description: "jndksemd",
     },
   };
-  const userId = await getUserId();
+  const userId = getUserId();
 
   console.log("userId", userId);
 
   return (
     <main className="max-w-[1500px] mx-auto px-6 pb-6">
-      <div className="w-full h-[64vh] mb-4 overflow-hidden rounded-xl relative">
-        <Image
-          fill
-          src={property.image_url}
-          className="object-cover w-full h-full"
-          alt="Beach house"
-        />
-      </div>
+      <ImageGallery images={property.image_url} openModal={openModal} />
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50"
+          onClick={closeModal} // Close modal on background click
+        >
+          <div className="relative w-full max-w-5xl max-h-[90vh] overflow-y-auto p-4 rounded-lg">
+            <div className="grid grid-cols-1 gap-4">
+              {property?.image_url.map((image, index) => (
+                <div key={index} className="relative w-full h-80">
+                  <Image
+                    src={image}
+                    alt={`Property Image ${index + 1}`}
+                    layout="fill"
+                    objectFit="contain"
+                    className="rounded-lg"
+                  />
+                </div>
+              ))}
+            </div>
+            <button
+              className="absolute top-4 right-4 text-white bg-black bg-opacity-50 px-3 py-1 rounded"
+              onClick={closeModal} // Close modal on button click
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         <div className="py-6 pr-6 col-span-3">
@@ -55,7 +131,7 @@ const PropertyDetailPage = async ({ params }: { params: { id: string } }) => {
                 width={50}
                 height={50}
                 className="rounded-full"
-                alt="The user name"
+                alt={property.landlord.name}
               />
             )}
 
