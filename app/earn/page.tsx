@@ -1,123 +1,120 @@
 "use client";
 import React, { useState } from "react";
-import { MapPin, Search, Plus, Minus } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-const dummyMapData = [
-  { id: 1, location: "Avadi", rate: 3898, x: 20, y: 30 },
-  { id: 2, location: "Chennai", rate: 3577, x: 50, y: 50 },
-  { id: 3, location: "Guindy", rate: 3572, x: 70, y: 60 },
-  { id: 4, location: "Velachery", rate: 6638, x: 60, y: 70 },
-  { id: 5, location: "Sholinganallur", rate: 7037, x: 80, y: 80 },
-];
-
-const AirbnbEarningsCalculator = () => {
-  const [nights, setNights] = useState(7);
-  const [earnings, setEarnings] = useState(25837);
-  const [nightly, setNightly] = useState(3691);
+const MyComponent = () => {
+  const [nights, setNights] = useState(1); // This will control both nights and the count
+  const [searchTerm, setSearchTerm] = useState("");
+  const [pricePerNight, setPricePerNight] = useState(3000);
   const router = useRouter();
 
-  const updateEarnings = (newNights) => {
-    setNights(newNights);
-    setEarnings(newNights * nightly);
+  const data = [
+    { id: 1, name: "Mount Hope", description: "Entire place · 2 bedrooms" },
+  ];
+
+  const filteredData = data.filter((item) =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleNightsChange = (newNights) => {
+    if (newNights > 0) {
+      setNights(newNights);
+    }
   };
 
   return (
-    <div className="font-sans max-w-4xl mx-auto p-4">
-      <header className="flex justify-between items-center mb-8">
-        <svg
-          className="w-8 h-8 text-red-500"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-        >
-          {/* <path d="M22.5 2h-21C.7 2 0 2.7 0 3.5v17c0 .8.7 1.5 1.5 1.5h21c.8 0 1.5-.7 1.5-1.5v-17c0-.8-.7-1.5-1.5-1.5zm-8.3 15.2c0 .3-.2.5-.5.5h-3.4c-.3 0-.5-.2-.5-.5v-3.4c0-.3.2-.5.5-.5h3.4c.3 0 .5.2.5.5v3.4zm0-6.8c0 .3-.2.5-.5.5h-3.4c-.3 0-.5-.2-.5-.5V7c0-.3.2-.5.5-.5h3.4c.3 0 .5.2.5.5v3.4z" /> */}
-        </svg>
-        <button
-          className="bg-pink-500 text-white px-4 py-2 rounded-lg font-semibold"
+    <div className="relative w-full h-screen bg-white flex items-center justify-center">
+      <div className="flex gap-10 ">
+        {/* Stay and Experience Cards */}
+
+        <div
           onClick={() => {
             router.push("/property");
           }}
+          className="w-[300px] h-[280px] mt-[-50px] text-[32px] font-medium bg-white border border-[#BAB4B4] shadow-lg rounded-[24px] flex items-center justify-center hover:bg-black hover:text-white transition-colors duration-300 cursor-pointer"
         >
-          Airbnb Setup
-        </button>
-      </header>
-
-      <main className="flex gap-8">
-        <div className="flex-1">
-          <h1 className="text-4xl font-bold mb-2">
-            <span className="text-pink-500">Airbnb it</span>
-            <br />
-            You could earn
-          </h1>
-          <p className="text-5xl font-bold mb-2">
-            ₹{earnings.toLocaleString()}
-          </p>
-          <p className="text-gray-600 mb-4">
-            {nights} nights at an estimated ₹{nightly.toLocaleString()} a night
-          </p>
-
-          <input
-            type="range"
-            min="1"
-            max="30"
-            value={nights}
-            onChange={(e) => updateEarnings(parseInt(e.target.value))}
-            className="w-full mb-4"
-          />
-
-          <a href="#" className="text-gray-600 underline">
-            Learn how we estimate your earnings
-          </a>
-
-          <div className="mt-4 relative">
-            <Search className="absolute left-3 top-3 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Chennai"
-              className="w-full pl-10 pr-4 py-2 border rounded-full"
-              value="Chennai"
-              readOnly
-            />
-            <p className="text-gray-500 mt-1 ml-2">Entire place • 2 bedrooms</p>
-          </div>
+          {/* <div className="text-[32px] text-[#3C3636] hover:text-white font-medium"> */}
+          Stay
+          {/* </div> */}
+        </div>
+        <div
+          onClick={() => {
+            router.push("/property");
+          }}
+          className="w-[300px] h-[280px] mt-[-50px] text-[32px] font-medium bg-white border border-[#BAB4B4] shadow-lg rounded-[24px] flex items-center justify-center hover:bg-black hover:text-white transition-colors duration-300 cursor-pointer"
+        >
+          {/* <div className="text-[32px] text-[#3C3636] font-medium"> */}
+          Experience
+          {/* </div> */}
         </div>
 
-        <div className="flex-1 relative">
-          <div className="absolute top-2 left-2 bg-white px-2 py-1 rounded shadow z-10">
-            Explore rates near you
+        {/* Earnings Box */}
+        <div className="w-[557px] h-[550px] mb-12 bg-white border border-[#BAB4B4] mt-[-144px] shadow-lg rounded-[24px] p-8 flex flex-col items-center">
+          <div className="text-[40px] font-semibold text-[#3C3636] mb-2">
+            YUYK it.
           </div>
-          <div
-            className="h-96 rounded-lg relative overflow-hidden"
-            style={{
-              backgroundImage: "url('/map.png')",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            {dummyMapData.map((item) => (
-              <div
-                key={item.id}
-                className="absolute"
-                style={{ top: `${item.y}%`, left: `${item.x}%` }}
-              >
-                <div className="bg-white rounded-full px-2 py-1 shadow text-sm">
-                  ₹{item.rate.toLocaleString()}
+          <div className="text-[32px] font-medium text-[#3C3636] mb-8">
+            You could earn
+          </div>
+          <div className="text-[96px] font-medium text-[#3C3636] mb-4">
+            ₹ {pricePerNight * nights}
+          </div>
+          <div className="flex items-center mb-8">
+            <button
+              className="px-4 py-2 bg-[#3C3636] text-white rounded mr-4"
+              onClick={() => handleNightsChange(nights + 1)}
+            >
+              Increment Nights
+            </button>
+            <div className="text-[24px] text-[#222222]">
+              {nights} night{nights > 1 ? "s" : ""}
+            </div>
+          </div>
+          <div className="text-[24px] text-[#222222] mb-8">
+            at an estimated ₹{pricePerNight} a night
+          </div>
+
+          {/* Slider */}
+          <input
+            type="range"
+            min="1000"
+            max="5000"
+            step="100"
+            value={pricePerNight}
+            onChange={(e) => setPricePerNight(e.target.value)}
+            className="w-full mb-4"
+          />
+          <div className="text-[#6A6A6A] underline text-[14px] mb-8 cursor-pointer">
+            Learn how we estimate your earnings
+          </div>
+
+          {/* Search Box */}
+          <div className="relative w-full ml-[-1400px] mt-[-120px]">
+            <input
+              type="text"
+              className="w-full p-4 pl-12 rounded-full border border-[#DDDDDD] text-[18px]"
+              placeholder="Search..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <div className="absolute left-4 mt-[-40px] top-1/2  text-[#222222]">
+              🔍
+            </div>
+            {filteredData.map((item) => (
+              <div key={item.id} className="mt-4">
+                <div className="text-[#222222] text-[18px] font-semibold">
+                  {item.name}
+                </div>
+                <div className="text-[#6A6A6A] text-[14px]">
+                  {item.description}
                 </div>
               </div>
             ))}
           </div>
-          <div className="absolute bottom-4 right-4 flex flex-col gap-2">
-            <button className="bg-white p-2 rounded-full shadow">
-              <Plus size={16} />
-            </button>
-            <button className="bg-white p-2 rounded-full shadow">
-              <Minus size={16} />
-            </button>
-          </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 };
 
-export default AirbnbEarningsCalculator;
+export default MyComponent;

@@ -14,9 +14,9 @@ const AddPropertyButton: React.FC<AddPropertyButtonProps> = ({ userId }) => {
   const router = useRouter();
   const airbnbYourHome = () => {
     // if (userId) {
-    //     addPropertyModal.open()
+    //   addPropertyModal.open();
     // } else {
-    //     loginModal.open();
+    //   loginModal.open();
     // }
     router.push("/earn");
   };
