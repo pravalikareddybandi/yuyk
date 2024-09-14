@@ -17,7 +17,9 @@ const AddressInput = () => {
     zipCode: "",
   });
 
-  const handleAddressChange = (e) => {
+  const handleAddressChange = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
     setAddress(e.target.value);
   };
 
@@ -29,7 +31,7 @@ const AddressInput = () => {
     setStep(step - 1);
   };
 
-  const handleAddressDetailsChange = (field, value) => {
+  const handleAddressDetailsChange = (field: string, value: string) => {
     setAddressDetails({ ...addressDetails, [field]: value });
   };
 

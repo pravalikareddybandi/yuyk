@@ -5,7 +5,7 @@ import useAddPropertyModal from "@/app/hooks/useAddPropertyModal";
 import { useRouter } from "next/navigation";
 
 interface AddPropertyButtonProps {
-  userId?: string | null;
+  userId?: any;
 }
 
 const AddPropertyButton: React.FC<AddPropertyButtonProps> = ({ userId }) => {

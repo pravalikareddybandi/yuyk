@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
-const MyComponent = () => {
-  const [nights, setNights] = useState(1); // This will control both nights and the count
-  const [searchTerm, setSearchTerm] = useState("");
-  const [pricePerNight, setPricePerNight] = useState(3000);
+const MyComponent: React.FC = () => {
+  const [nights, setNights] = useState<number>(1); // Controls nights and count
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [pricePerNight, setPricePerNight] = useState<number>(3000); // Ensures correct number type
   const router = useRouter();
 
   const data = [
@@ -16,7 +16,7 @@ const MyComponent = () => {
     item.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleNightsChange = (newNights) => {
+  const handleNightsChange = (newNights: number) => {
     if (newNights > 0) {
       setNights(newNights);
     }
@@ -24,28 +24,24 @@ const MyComponent = () => {
 
   return (
     <div className="relative w-full h-screen bg-white flex items-center justify-center">
-      <div className="flex gap-10 ">
+      <div className="flex gap-10">
         {/* Stay and Experience Cards */}
-
         <div
           onClick={() => {
             router.push("/property");
           }}
           className="w-[300px] h-[280px] mt-[-50px] text-[32px] font-medium bg-white border border-[#BAB4B4] shadow-lg rounded-[24px] flex items-center justify-center hover:bg-black hover:text-white transition-colors duration-300 cursor-pointer"
         >
-          {/* <div className="text-[32px] text-[#3C3636] hover:text-white font-medium"> */}
           Stay
-          {/* </div> */}
         </div>
+
         <div
           onClick={() => {
             router.push("/experience/experiencelist");
           }}
           className="w-[300px] h-[280px] mt-[-50px] text-[32px] font-medium bg-white border border-[#BAB4B4] shadow-lg rounded-[24px] flex items-center justify-center hover:bg-black hover:text-white transition-colors duration-300 cursor-pointer"
         >
-          {/* <div className="text-[32px] text-[#3C3636] font-medium"> */}
           Experience
-          {/* </div> */}
         </div>
 
         {/* Earnings Box */}
@@ -81,7 +77,7 @@ const MyComponent = () => {
             max="5000"
             step="100"
             value={pricePerNight}
-            onChange={(e) => setPricePerNight(e.target.value)}
+            onChange={(e) => setPricePerNight(Number(e.target.value))} // Ensure conversion to number
             className="w-full mb-4"
           />
           <div className="text-[#6A6A6A] underline text-[14px] mb-8 cursor-pointer">

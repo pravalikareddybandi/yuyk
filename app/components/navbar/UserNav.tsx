@@ -10,7 +10,7 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 import useSignupModal from "@/app/hooks/useSignupModal";
 
 interface UserNavProps {
-  userId?: string | null;
+  userId?: any;
 }
 
 const UserNav: React.FC<UserNavProps> = ({ userId }) => {

@@ -4,24 +4,25 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useRouter } from "next/navigation";
 
-const DetailSection = () => {
-  const [location, setLocation] = useState("");
-  const [price, setPrice] = useState("");
-  const [availability, setAvailability] = useState(null);
-  const [addOn, setAddOn] = useState("");
-  const [customRule, setCustomRule] = useState("");
+const DetailSection: React.FC = () => {
+  const [location, setLocation] = useState<string>("");
+  const [price, setPrice] = useState<string>("");
+  const [availability, setAvailability] = useState<Date | null>(null);
+  const [addOn, setAddOn] = useState<string>("");
+  const [customRule, setCustomRule] = useState<string>("");
   const [rules, setRules] = useState({
     adults: false,
     pets: false,
     alcohol: false,
   });
 
-  const handleRuleChange = (rule) => {
+  const handleRuleChange = (rule: keyof typeof rules) => {
     setRules((prevRules) => ({ ...prevRules, [rule]: !prevRules[rule] }));
   };
+
   const router = useRouter();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const formData = {
       location,
@@ -34,6 +35,7 @@ const DetailSection = () => {
       },
     };
     console.log("Form submitted:", formData);
+    router.push("/experience/upload"); // Navigate after form submission
   };
 
   return (
@@ -57,8 +59,9 @@ const DetailSection = () => {
       </div>
 
       <div className="flex flex-row space-x-8">
-        {/* Image on the left */}
+        {/* Form Section */}
         <form onSubmit={handleSubmit} className="w-1/2 space-y-4">
+          {/* Location Input */}
           <div className="relative">
             <input
               type="text"
@@ -89,6 +92,7 @@ const DetailSection = () => {
             </svg>
           </div>
 
+          {/* Price Input */}
           <div className="relative">
             <input
               type="text"
@@ -113,10 +117,11 @@ const DetailSection = () => {
             </svg>
           </div>
 
+          {/* Availability Date Picker */}
           <div className="relative">
             <DatePicker
               selected={availability}
-              onChange={(date) => setAvailability(date)}
+              onChange={(date: Date | null) => setAvailability(date)}
               placeholderText="Create Your Availability"
               className="w-full pl-4 pr-10 py-3 border rounded-full shadow-sm"
             />
@@ -136,6 +141,7 @@ const DetailSection = () => {
             </svg>
           </div>
 
+          {/* Add-on Input */}
           <div className="relative">
             <input
               type="text"
@@ -160,6 +166,7 @@ const DetailSection = () => {
             </svg>
           </div>
 
+          {/* Rules Section */}
           <div className="mt-6">
             <h2 className="text-lg font-semibold mb-2">Add your rules</h2>
             <div className="space-y-2">
@@ -176,8 +183,8 @@ const DetailSection = () => {
                   <input
                     type="checkbox"
                     id={`rule-${key}`}
-                    checked={rules[key]}
-                    onChange={() => handleRuleChange(key)}
+                    checked={rules[key as keyof typeof rules]}
+                    onChange={() => handleRuleChange(key as keyof typeof rules)}
                     className="mr-2 h-5 w-5"
                   />
                   <label
@@ -189,6 +196,7 @@ const DetailSection = () => {
                   </label>
                 </div>
               ))}
+              {/* Custom Rule Input */}
               <div className="relative">
                 <input
                   type="text"
@@ -215,6 +223,7 @@ const DetailSection = () => {
             </div>
           </div>
 
+          {/* Submit Button */}
           <div className="flex justify-end mt-6">
             <button
               type="submit"
@@ -242,7 +251,7 @@ const DetailSection = () => {
           </div>
         </form>
 
-        {/* Form on the right */}
+        {/* Image on the right */}
         <div className="w-1/2">
           <img
             src="/mapnav.png"

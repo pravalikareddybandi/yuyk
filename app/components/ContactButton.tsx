@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 import apiService from "../services/apiService";
 
 interface ContactButtonProps {
-  userId: string | null;
-  landlordId: string;
+  userId: any;
+  landlordId: any;
 }
 
 const ContactButton: React.FC<ContactButtonProps> = ({

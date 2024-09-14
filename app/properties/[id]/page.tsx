@@ -142,7 +142,7 @@ const PropertyDetailPage = ({ params }: { params: { id: string } }) => {
 
           <hr />
 
-          <p className="mt-6 text-lg">{property.description}</p>
+          <p className="mt-6 text-lg">{property.landlord.description}</p>
         </div>
 
         <ReservationSidebar property={property} userId={userId} />

@@ -2,16 +2,16 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
-const UploadImage = () => {
-  const [image, setImage] = useState(null);
+const UploadImage: React.FC = () => {
+  const [image, setImage] = useState<string | null>(null);
   const router = useRouter();
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImage(reader.result);
+        setImage(reader.result as string); // Base64 string
       };
       reader.readAsDataURL(file);
     }
@@ -33,12 +33,12 @@ const UploadImage = () => {
           ) : (
             <div>
               <img
-                src={"/imge.png"}
+                src="/imge.png"
                 alt="Uploaded"
                 className="mx-auto mb-4 h-42 w-48 object-cover rounded-md"
               />
               <p className="text-gray-500 mb-4">
-                Upload your image that related to your service
+                Upload your image related to your service
               </p>
             </div>
           )}
@@ -52,17 +52,18 @@ const UploadImage = () => {
             id="file-upload"
             type="file"
             className="hidden"
+            accept="image/*"
             onChange={handleImageChange}
           />
         </div>
       </div>
+
+      {/* Navigation Buttons */}
       <div className="flex justify-between max-w-[1000px] w-full mt-6">
         <button
-          type="submit"
+          type="button"
           className="bg-black text-white px-6 py-3 rounded-full font-semibold"
-          onClick={() => {
-            router.push("/experience");
-          }}
+          onClick={() => router.push("/experience")}
         >
           Previous
           <svg
@@ -80,12 +81,11 @@ const UploadImage = () => {
             />
           </svg>
         </button>
+
         <button
-          type="submit"
+          type="button"
           className="bg-black text-white px-6 py-3 rounded-full font-semibold"
-          onClick={() => {
-            router.push("/experience/summary");
-          }}
+          onClick={() => router.push("/experience/summary")}
         >
           Next
           <svg

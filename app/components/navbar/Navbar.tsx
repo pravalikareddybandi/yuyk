@@ -7,7 +7,7 @@ import { getUserId } from "@/app/lib/actions";
 import AddPropertyButton from "./AddPropertyButton";
 
 const Navbar = async () => {
-  const userId = await getUserId();
+  const userId = (await getUserId()) || null || undefined;
 
   console.log("userId:", userId);
 

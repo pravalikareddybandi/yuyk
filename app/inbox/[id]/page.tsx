@@ -26,7 +26,7 @@ const ConversationPage = async ({ params }: { params: { id: string } }) => {
     );
   }
 
-  //   const conversation = await apiService.get(`/api/chat/${params.id}/`);
+  const conversation = await apiService.get(`/api/chat/${params.id}/`);
 
   return (
     <main className="max-w-[1500px] mx-auto px-6 pb-6">
@@ -39,24 +39,15 @@ const ConversationPage = async ({ params }: { params: { id: string } }) => {
             name: "string",
             body: "string",
             conversationId: "string",
-            sent_to: [{ id: "string", name: "string", avatar_url: "string" }],
-            created_by: [
-              { id: "stringvh", name: "stringhbj", avatar_url: "stringkmk" },
-            ],
+            sent_to: { id: "string", name: "string", avatar_url: "string" },
+            created_by: {
+              id: "stringvh",
+              name: "stringhbj",
+              avatar_url: "stringkmk",
+            },
           },
         ]}
-        conversation={[
-          {
-            id: "kjnkml",
-            users: [
-              {
-                id: "jhnklnml",
-                name: "jnlkml",
-                avatar_url: "hkjhlk",
-              },
-            ],
-          },
-        ]}
+        conversation={conversation}
       />
     </main>
   );

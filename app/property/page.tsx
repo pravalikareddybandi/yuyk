@@ -44,7 +44,7 @@ const AccommodationTypeSelector = () => {
                 ? "border-black shadow-md"
                 : "border-gray-300 hover:border-gray-400"
             }`}
-            onClick={() => setSelectedType(type.id)}
+            // onClick={() => setSelectedType(type.id)}
           >
             <div className="flex items-center justify-between">
               <div>

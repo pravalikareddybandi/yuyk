@@ -6,7 +6,7 @@ interface CustomButtonProps {
   onClick: () => void;
   // Add `type` as an optional prop
   type?: "button" | "submit" | "reset";
-  className: string;
+  className?: string;
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({

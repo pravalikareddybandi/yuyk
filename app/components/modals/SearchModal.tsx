@@ -21,7 +21,7 @@ const initialDateRange = {
   key: "selection",
 };
 console.log("nsjnsj", initialDateRange);
-const RegionCard = ({ name, img }) => (
+const RegionCard = ({ name, img }: { name: string; img: string }) => (
   <div className="cursor-pointer">
     <img
       src={img}

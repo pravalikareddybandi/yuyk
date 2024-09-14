@@ -21,8 +21,8 @@ export type Property = {
 };
 
 interface ReservationSidebarProps {
-  userId: string | null;
-  property: Property;
+  userId: any;
+  property: any;
 }
 
 const ReservationSidebar: React.FC<ReservationSidebarProps> = ({

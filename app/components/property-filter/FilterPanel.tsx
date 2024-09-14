@@ -2,21 +2,38 @@
 
 import React, { useState } from "react";
 
+// Define types for rooms, property types, and amenities
+type RoomType = "any" | "1" | "2" | "3" | "4" | "5" | "6+";
+type PropertyType = "house" | "hotel" | "guesthouse" | "apartment";
+type AmenityType =
+  | "wifi"
+  | "kitchen"
+  | "washer"
+  | "dryer"
+  | "parking"
+  | "pool"
+  | "gym"
+  | "playground";
+
 const FilterComponent = () => {
-  const [placeType, setPlaceType] = useState("any type");
-  const [priceRange, setPriceRange] = useState([20, 37]);
-  const [rooms, setRooms] = useState({
+  const [placeType, setPlaceType] = useState<string>("any type");
+  const [priceRange, setPriceRange] = useState<[number, number]>([20, 37]);
+  const [rooms, setRooms] = useState<
+    Record<"bedrooms" | "beds" | "bathrooms", RoomType>
+  >({
     bedrooms: "any",
     beds: "any",
     bathrooms: "any",
   });
-  const [propertyTypes, setPropertyTypes] = useState({
+  const [propertyTypes, setPropertyTypes] = useState<
+    Record<PropertyType, boolean>
+  >({
     house: false,
     hotel: false,
     guesthouse: false,
     apartment: false,
   });
-  const [amenities, setAmenities] = useState({
+  const [amenities, setAmenities] = useState<Record<AmenityType, boolean>>({
     wifi: false,
     kitchen: false,
     washer: false,
@@ -26,18 +43,18 @@ const FilterComponent = () => {
     gym: false,
     playground: false,
   });
-  const [instantBook, setInstantBook] = useState(true);
-  const [selfCheckIn, setSelfCheckIn] = useState(false);
+  const [instantBook, setInstantBook] = useState<boolean>(true);
+  const [selfCheckIn, setSelfCheckIn] = useState<boolean>(false);
 
-  const handleRoomSelection = (type: string, value: string) => {
+  const handleRoomSelection = (type: keyof typeof rooms, value: RoomType) => {
     setRooms((prev) => ({ ...prev, [type]: value }));
   };
 
-  const handlePropertyTypeToggle = (type: string) => {
+  const handlePropertyTypeToggle = (type: PropertyType) => {
     setPropertyTypes((prev) => ({ ...prev, [type]: !prev[type] }));
   };
 
-  const handleAmenityToggle = (amenity: string) => {
+  const handleAmenityToggle = (amenity: AmenityType) => {
     setAmenities((prev) => ({ ...prev, [amenity]: !prev[amenity] }));
   };
 
@@ -107,7 +124,7 @@ const FilterComponent = () => {
 
       <div className="mb-6">
         <h3 className="text-sm font-medium mb-2">Rooms and Beds</h3>
-        {["Bedrooms", "Bed", "Bathrooms"].map((item) => (
+        {["Bedrooms", "Beds", "Bathrooms"].map((item) => (
           <div key={item} className="mb-2">
             <p className="text-sm mb-1">{item}</p>
             <div className="flex space-x-2">
@@ -115,12 +132,16 @@ const FilterComponent = () => {
                 <button
                   key={num}
                   className={`px-2 py-1 text-sm rounded-full ${
-                    rooms[item.toLowerCase()] === num.toLowerCase()
+                    rooms[item.toLowerCase() as keyof typeof rooms] ===
+                    num.toLowerCase()
                       ? "bg-black text-white"
                       : "bg-white border border-gray-300 text-gray-700"
                   }`}
                   onClick={() =>
-                    handleRoomSelection(item.toLowerCase(), num.toLowerCase())
+                    handleRoomSelection(
+                      item.toLowerCase() as keyof typeof rooms,
+                      num.toLowerCase() as RoomType
+                    )
                   }
                 >
                   {num}
@@ -143,11 +164,13 @@ const FilterComponent = () => {
             <button
               key={name}
               className={`flex items-center space-x-2 p-2 border rounded ${
-                propertyTypes[name.toLowerCase()]
+                propertyTypes[name.toLowerCase() as PropertyType]
                   ? "border-black"
                   : "border-gray-300"
               }`}
-              onClick={() => handlePropertyTypeToggle(name.toLowerCase())}
+              onClick={() =>
+                handlePropertyTypeToggle(name.toLowerCase() as PropertyType)
+              }
             >
               <span className="text-xl">{icon}</span>
               <span>{name}</span>
@@ -173,9 +196,15 @@ const FilterComponent = () => {
               <input
                 type="checkbox"
                 className="form-checkbox h-4 w-4 text-black rounded border-gray-300"
-                checked={amenities[amenity.toLowerCase().replace(" ", "")]}
+                checked={
+                  amenities[
+                    amenity.toLowerCase().replace(" ", "") as AmenityType
+                  ]
+                }
                 onChange={() =>
-                  handleAmenityToggle(amenity.toLowerCase().replace(" ", ""))
+                  handleAmenityToggle(
+                    amenity.toLowerCase().replace(" ", "") as AmenityType
+                  )
                 }
               />
               <span className="text-sm">{amenity}</span>
