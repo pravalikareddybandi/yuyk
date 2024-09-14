@@ -39,7 +39,7 @@ const MyComponent = () => {
         </div>
         <div
           onClick={() => {
-            router.push("/property");
+            router.push("/experience/experiencelist");
           }}
           className="w-[300px] h-[280px] mt-[-50px] text-[32px] font-medium bg-white border border-[#BAB4B4] shadow-lg rounded-[24px] flex items-center justify-center hover:bg-black hover:text-white transition-colors duration-300 cursor-pointer"
         >
