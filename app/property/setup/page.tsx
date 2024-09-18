@@ -291,7 +291,7 @@ const AddressInput = () => {
               Back
             </button>
             <button
-              onClick={handleNextStep}
+              // onClick={handleNextStep}
               className="px-6 py-2 bg-rose-500 text-white rounded-lg"
             >
               Next

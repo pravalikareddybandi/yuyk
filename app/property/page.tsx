@@ -4,7 +4,7 @@ import { Home, DoorOpen, Users } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 const AccommodationTypeSelector = () => {
-  const [selectedType, setSelectedType] = useState(null);
+  const [selectedType, setSelectedType] = useState<string | null>(null);
   const router = useRouter();
 
   const accommodationTypes = [
@@ -44,7 +44,7 @@ const AccommodationTypeSelector = () => {
                 ? "border-black shadow-md"
                 : "border-gray-300 hover:border-gray-400"
             }`}
-            // onClick={() => setSelectedType(type.id)}
+            onClick={() => setSelectedType(type.id)}
           >
             <div className="flex items-center justify-between">
               <div>

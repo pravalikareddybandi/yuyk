@@ -57,21 +57,22 @@ const PropertyDetailPage = ({ params }: { params: { id: string } }) => {
   };
   const property = {
     image_url: [
-      "/beach_1.jpg",
-      "/beach_1.jpg",
-      "/beach_1.jpg",
-      "/beach_1.jpg",
-      "/beach_1.jpg",
+      "/house_1.jpeg",
+      "/house_2.jpeg",
+      "/house_3.jpeg",
+      "/house_4.jpeg",
+      "/house_5.jpeg",
+
     ],
-    title: "hello",
+    title: "Kapalua Bay resort",
     bedrooms: 1,
     guests: 10,
     bathrooms: 1,
     landlord: {
       id: "lsckld",
-      avatar_url: "/beach_1.jpg",
-      name: "jnkedm",
-      description: "jndksemd",
+      avatar_url: "/profilephoto.jpg",
+      name: "Durga",
+      description: "I loved staying in a beach front villa at the Kapalua Bay resort. It's in Maui. It's right on Kapalua Bay. Individual villas with parking spaces right at each villa. Super luxurious with full kitchen, big living room, huge windows with white water views. Balcony, beautiful bathroom. It felt like our little house. Away from the scene at Wailea and not hot like Lahaina. Golfing, restaurants. Very peaceful and quiet. My husband loved the TV reception. Fairly affordable at about $400 a night no resort fee and only a $300 booking deposit. Near Honolua Bay and north shore of Maui.",
     },
   };
   const userId = getUserId();
@@ -128,8 +129,8 @@ const PropertyDetailPage = ({ params }: { params: { id: string } }) => {
             {property.landlord.avatar_url && (
               <Image
                 src={property.landlord.avatar_url}
-                width={50}
-                height={50}
+                width={70}
+                height={60}
                 className="rounded-full"
                 alt={property.landlord.name}
               />
