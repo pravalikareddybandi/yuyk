@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { Calendar, MapPin, Clock } from "lucide-react";
+import { useRouter } from "next/navigation";
+
 
 const ExperienceForm = () => {
   const [experience, setExperience] = useState({
@@ -17,6 +19,7 @@ const ExperienceForm = () => {
     images: ["/beach_1.jpg", "/beach_1.jpg", "/beach_1.jpg", "/beach_1.jpg"],
     rules: ["Pet not allowed", "Alcohol not allowed"],
   });
+  const router = useRouter();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -213,7 +216,9 @@ const ExperienceForm = () => {
       </div>
 
       {/* Publish Button */}
-      <button className="w-full bg-black text-white py-2 px-4 rounded hover:bg-gray-800 transition duration-300">
+      <button className="w-full bg-black text-white py-2 px-4 rounded hover:bg-gray-800 transition duration-300" onClick={()=>{
+        router.push("/experience/success");
+      }}>
         Publish
       </button>
     </div>
